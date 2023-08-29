@@ -22,25 +22,31 @@ public class Herencia {
 
     public static void main(String[] args) {
 
-        // Inicializacion del menu
+        // Inicializacion del de componentes
         ArrayList<Opcion> listaOpciones = new ArrayList<>();
         listaOpciones.add(new Opcion(0, "Salir"));
-        listaOpciones.add(new Opcion(1, "Crear"));
-        listaOpciones.add(new Opcion(2, "Eliminar"));
-        listaOpciones.add(new Opcion(3, "Modificar"));
-        listaOpciones.add(new Opcion(4, "Ver"));
+        listaOpciones.add(new Opcion(1, "Crear trabajador"));
+        listaOpciones.add(new Opcion(2, "Eliminar trabajador"));
+        listaOpciones.add(new Opcion(3, "Modificar trabajador"));
         listaOpciones.add(new Opcion(5, "Listar"));
         
         // Definicion de variables globales
         boolean runAplication = true;
         Data data = new Data();
         
+        // Carga de datos
+        data.createWorker(new Trabajador("Profesor", 5000, "max", "moraga", LocalDate.of(1994, 01, 25), "+569 26311601", "18646384-6"));
+        
         // Estructura del sistema
         do {
             
             mostrarMenu(listaOpciones);
+            
+            System.out.print("[->] ");
             int op = input.nextInt();
+            
             String msj = "Ejecucion de la opcion -> " + listaOpciones.get(op);
+            
             switch (op) {
                 case 0 -> {
                     System.out.println(msj);
@@ -67,10 +73,6 @@ public class Herencia {
                     System.out.println(msj);
 
                 }
-                case 4 -> {
-                    System.out.println(msj);
-
-                }
                 case 5 -> {
                     System.out.println(msj);
 
@@ -82,8 +84,6 @@ public class Herencia {
             }
         } while (runAplication);
         
-        Persona per = new Persona("max", "moraga", LocalDate.of(1994, 01, 25), "+569 26311601", "18646384-6");
-        System.out.println(per);
     }
     
     // Formulario para la creacion de una persona
